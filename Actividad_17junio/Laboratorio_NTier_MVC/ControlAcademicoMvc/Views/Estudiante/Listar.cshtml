@@ -1,0 +1,34 @@
+@model IEnumerable<Estudiante>
+
+@{
+    ViewData["Title"] = "Listado de Estudiantes";
+}
+
+<h1>Listado de Estudiantes</h1>
+
+@if (!Model.Any())
+{
+    <p>No hay estudiantes registrados.</p>
+}
+else
+{
+    <table border="1" cellpadding="6">
+        <thead>
+            <tr>
+                <th>Carné</th>
+                <th>Nombre</th>
+                <th>Promedio</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var estudiante in Model)
+            {
+                <tr>
+                    <td>@estudiante.Carne</td>
+                    <td>@estudiante.Nombre</td>
+                    <td>@estudiante.Promedio.ToString("0.0")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
